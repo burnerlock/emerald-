@@ -25,3 +25,28 @@ SINGLE_BATTLE_TEST("Iron Fist increases the power of punching moves by 20%", s16
         EXPECT_EQ(results[2].damage, results[3].damage); // Iron Fist does not affect non-punching moves
     }
 }
+
+SINGLE_BATTLE_TEST("Tae-Kwon-Do increases the power of kicking moves by 33%", s16 damage)
+{
+    enum Move move;
+    enum Ability ability;
+    PARAMETRIZE { move = MOVE_TROP_KICK; ability = ABILITY_TAEKWONDO; }
+    PARAMETRIZE { move = MOVE_TROP_KICK; ability = ABILITY_BLAZE; }
+    PARAMETRIZE { move = MOVE_SMART_STRIKE;      ability = ABILITY_TAEKWONDO; }
+    PARAMETRIZE { move = MOVE_SMART_STRIKE;      ability = ABILITY_BLAZE; }
+
+    GIVEN {
+        ASSUME(IsKickingMove(MOVE_TROP_KICK));
+        ASSUME(!IsKickingMove(MOVE_SMART_STRIKE));
+        ASSUME(GetMovePower(MOVE_TROP_KICK) == GetMovePower(MOVE_SMART_STRIKE));
+        PLAYER(SPECIES_BLAZIKEN) { Ability(ability); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, move); }
+    } SCENE {
+        HP_BAR(opponent, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[1].damage, Q_4_12(1.33), results[0].damage); 
+        EXPECT_EQ(results[2].damage, results[3].damage); 
+    }
+}

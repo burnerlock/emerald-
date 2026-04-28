@@ -2413,4 +2413,11 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
     },
+
+    [ABILITY_TAEKWONDO] =
+    {
+        .name = _("Tae-Kwon-Do"),
+        .description = COMPOUND_STRING("Boosts kicking moves."),
+        .aiRating = 8,
+    },
 };
