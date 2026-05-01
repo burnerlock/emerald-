@@ -15,7 +15,7 @@ MoveTutor_EventScript_SwaggerTaught::
 	release
 	end
 
-MoveTutor_EventScript_IcePunchTutor::
+ MoveTutor_EventScript_ElementalPunchesTutor::
 	lock
 	faceplayer
 
