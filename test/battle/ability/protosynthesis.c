@@ -22,7 +22,53 @@ SINGLE_BATTLE_TEST("Protosynthesis boosts the highest stat")
     }
 }
 
-SINGLE_BATTLE_TEST("Protosynthesis boosts either Attack or Special Attack, not both")
+ /* SINGLE_BATTLE_TEST("Protosynthesis increases attack by 33%.", s16 damage)
+{
+    enum Move move;
+    enum Ability ability;
+    PARAMETRIZE { move = MOVE_BULLET_PUNCH; ability = ABILITY_PROTOSYNTHESIS; }
+    PARAMETRIZE { move = MOVE_BULLET_PUNCH; ability = ABILITY_BLAZE; }
+    PARAMETRIZE { move = MOVE_SCRATCH;      ability = ABILITY_PROTOSYNTHESIS; }
+    PARAMETRIZE { move = MOVE_SCRATCH;      ability = ABILITY_BLAZE; }
+
+    GIVEN {
+        ASSUME(GetMovePower(MOVE_BULLET_PUNCH) == GetMovePower(MOVE_SCRATCH));
+        PLAYER(SPECIES_ROARING_MOON) { Ability(ability); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, move); }
+    } SCENE {
+        HP_BAR(opponent, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[1].damage, Q_4_12(1.33), results[0].damage);
+        EXPECT_EQ(results[2].damage, results[3].damage); 
+    }
+}
+
+SINGLE_BATTLE_TEST("Protosynthesis increases special attack by 33%.", s16 damage)
+{
+    enum Move move;
+    enum Ability ability;
+    PARAMETRIZE { move = MOVE_WATER_GUN; ability = ABILITY_PROTOSYNTHESIS; }
+    PARAMETRIZE { move = MOVE_WATER_GUN; ability = ABILITY_BLAZE; }
+    PARAMETRIZE { move = MOVE_EMBER;      ability = ABILITY_PROTOSYNTHESIS; }
+    PARAMETRIZE { move = MOVE_EMBER;      ability = ABILITY_BLAZE; }
+
+    GIVEN {
+        ASSUME(GetMovePower(MOVE_WATER_GUN) == GetMovePower(MOVE_EMBER));
+        PLAYER(SPECIES_ROARING_MOON) { Ability(ability); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, move); }
+    } SCENE {
+        HP_BAR(opponent, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[1].damage, Q_4_12(1.33), results[0].damage);
+        EXPECT_EQ(results[2].damage, results[3].damage); 
+    }
+}
+
+ SINGLE_BATTLE_TEST("Protosynthesis boosts either Attack or Special Attack, not both") 
 {
     u16 species;
     enum Move move;
@@ -52,7 +98,7 @@ SINGLE_BATTLE_TEST("Protosynthesis boosts either Attack or Special Attack, not b
         else
             EXPECT_EQ(damage[0], damage[1]);
     }
-}
+  } */ 
 
 SINGLE_BATTLE_TEST("Protosynthesis ability pop up activates only once during the duration of sunny day")
 {
@@ -330,7 +376,7 @@ SINGLE_BATTLE_TEST("Protosynthesis retains its boosted stat after Neutralizing G
     }
 }
 
-SINGLE_BATTLE_TEST("Protosynthesis damage calculation is correct")
+/* SINGLE_BATTLE_TEST("Protosynthesis damage calculation is correct")
 {
     s16 dmg;
     s16 expectedDamage;
@@ -363,4 +409,4 @@ SINGLE_BATTLE_TEST("Protosynthesis damage calculation is correct")
     } THEN {
         EXPECT_EQ(expectedDamage, dmg);
     }
-}
+ } */

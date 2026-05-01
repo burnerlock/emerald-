@@ -9058,7 +9058,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Dragon Claw"),
         .description = COMPOUND_STRING(
             "Slashes the foe with sharp\n"
-            "claws."),
+            "claws or fangs."),
         .effect = EFFECT_HIT,
         .power = 80,
         .type = TYPE_DRAGON,
@@ -9068,6 +9068,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
+        .bitingMove = TRUE,
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_HIGHLY_APPEALING : CONTEST_EFFECT_STARTLE_MONS_SAME_TYPE_APPEAL,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -16325,7 +16326,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Charges first turn, then\n"
             "chops with a blade of light."),
         .effect = EFFECT_SOLAR_BEAM,
-        .power = 125,
+        .power = 120,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 10,

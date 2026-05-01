@@ -2064,6 +2064,15 @@ static const struct FormChange sPalafinZeroFormChangeTable[] =
 };
 #endif //P_FAMILY_FINIZEN
 
+#if P_FAMILY_LEDYBA
+static const struct FormChange sLedianFormChangeTable[] =
+{
+    {FORM_CHANGE_BATTLE_SWITCH_IN, SPECIES_BUZZWOLE, ABILITY_ZERO_TO_HERO},
+    {FORM_CHANGE_END_BATTLE,        SPECIES_LEDIAN},
+    {FORM_CHANGE_TERMINATOR},
+};
+#endif //P_FAMILY_LEDYBA
+
 #if P_FAMILY_GLIMMET
 static const struct FormChange sGlimmoraFormChangeTable[] = {
 #if P_GEN_9_MEGA_EVOLUTIONS

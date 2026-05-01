@@ -3272,6 +3272,7 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
             weather = BATTLE_WEATHER_SUN;
             msg = B_MSG_STARTED_SUNLIGHT;
             break;
+        
         case MOVE_EFFECT_RAIN:
             weather = BATTLE_WEATHER_RAIN;
             msg = B_MSG_STARTED_RAIN;
@@ -7008,6 +7009,8 @@ static void RemoveAllWeather(void)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_SANDSTORM;
     else if (gBattleWeather & B_WEATHER_SUN)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_SUN;
+    else if (gBattleWeather & B_WEATHER_SUN_CHLOROPLAST)
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_SUN;
     else if (gBattleWeather & B_WEATHER_HAIL)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_HAIL;
     else if (gBattleWeather & B_WEATHER_STRONG_WINDS)
@@ -9454,6 +9457,8 @@ static void Cmd_recoverbasedonsunlight(void)
                 recoverAmount = GetNonDynamaxMaxHP(gBattlerAttacker) / 2;
             else if (gBattleWeather & B_WEATHER_SUN)
                 recoverAmount = 20 * GetNonDynamaxMaxHP(gBattlerAttacker) / 30;
+            else if (gBattleWeather & B_WEATHER_SUN_CHLOROPLAST)
+                recoverAmount = 20 * GetNonDynamaxMaxHP(gBattlerAttacker) / 30;
             else // not sunny weather
                 recoverAmount = GetNonDynamaxMaxHP(gBattlerAttacker) / 4;
         }
@@ -9485,6 +9490,8 @@ static void Cmd_recoverbasedonsunlight(void)
             if (!(gBattleWeather & B_WEATHER_ANY) || !HasWeatherEffect() || GetBattlerHoldEffect(gBattlerAttacker) == HOLD_EFFECT_UTILITY_UMBRELLA)
                 recoverAmount = healingModifier * GetNonDynamaxMaxHP(gBattlerAttacker) / 4;
             else if (gBattleWeather & B_WEATHER_SUN)
+                recoverAmount = healingModifier * GetNonDynamaxMaxHP(gBattlerAttacker) / 2;
+            else if (gBattleWeather & B_WEATHER_SUN_CHLOROPLAST)
                 recoverAmount = healingModifier * GetNonDynamaxMaxHP(gBattlerAttacker) / 2;
             else // not sunny weather
                 recoverAmount = healingModifier * GetNonDynamaxMaxHP(gBattlerAttacker) / 8;
@@ -14662,6 +14669,7 @@ void BS_TryToClearPrimalWeather(void)
         enum Ability ability = GetBattlerAbility(i);
         if (((ability == ABILITY_DESOLATE_LAND && gBattleWeather & B_WEATHER_SUN_PRIMAL)
              || (ability == ABILITY_PRIMORDIAL_SEA && gBattleWeather & B_WEATHER_RAIN_PRIMAL)
+             || (ability == ABILITY_CHLOROPLAST && gBattleWeather & B_WEATHER_SUN_CHLOROPLAST)
              || (ability == ABILITY_DELTA_STREAM && gBattleWeather & B_WEATHER_STRONG_WINDS))
             && IsBattlerAlive(i))
             shouldNotClear = TRUE;
@@ -14676,6 +14684,12 @@ void BS_TryToClearPrimalWeather(void)
     {
         gBattleWeather &= ~B_WEATHER_RAIN_PRIMAL;
         PrepareStringBattle(STRINGID_HEAVYRAINLIFTED, gBattlerAttacker);
+        gBattleCommunication[MSG_DISPLAY] = 1;
+    }
+     else if (gBattleWeather & B_WEATHER_SUN_CHLOROPLAST && !shouldNotClear)
+    {
+        gBattleWeather &= ~B_WEATHER_SUN_CHLOROPLAST;
+        PrepareStringBattle(STRINGID_EXTREMESUNLIGHTFADED, gBattlerAttacker);
         gBattleCommunication[MSG_DISPLAY] = 1;
     }
     else if (gBattleWeather & B_WEATHER_STRONG_WINDS && !shouldNotClear)

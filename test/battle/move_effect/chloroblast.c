@@ -79,6 +79,20 @@ SINGLE_BATTLE_TEST("Chloroblast does not cause recoil damage if the user has Roc
     }
 }
 
+SINGLE_BATTLE_TEST("Chloroblast does not cause recoil damage if the user has Reckless")
+{
+    GIVEN {
+        PLAYER(SPECIES_AERODACTYL) { Ability(ABILITY_RECKLESS); }
+        OPPONENT(SPECIES_WOBBUFFET) { HP(400); MaxHP(400); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_CHLOROBLAST); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CHLOROBLAST, player);
+        HP_BAR(opponent);
+        NOT HP_BAR(player);
+    }
+}
+
 SINGLE_BATTLE_TEST("Chloroblast does not cause the user to lose HP even if the opposing mon protected")
 {
     GIVEN {

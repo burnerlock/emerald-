@@ -135,6 +135,13 @@ static bool32 HandleEndTurnWeatherDamage(enum BattlerId battler)
                 effect = TRUE;
         }
         break;
+    case BATTLE_WEATHER_SUN_CHLOROPLAST:
+        if (ability == ABILITY_CHLOROPLAST || ability == ABILITY_PROTOSYNTHESIS)
+        {
+            if (AbilityBattleEffects(ABILITYEFFECT_ENDTURN, battler, ability, MOVE_NONE, TRUE))
+                effect = TRUE;
+        }
+        break;
     case BATTLE_WEATHER_SANDSTORM:
         if (ability != ABILITY_SAND_VEIL
          && ability != ABILITY_SAND_FORCE

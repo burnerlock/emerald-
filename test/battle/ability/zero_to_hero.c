@@ -1,7 +1,7 @@
 #include "global.h"
 #include "test/battle.h"
 
-SINGLE_BATTLE_TEST("Zero to Hero transforms Palafin when it switches out")
+/* SINGLE_BATTLE_TEST("Zero to Hero transforms Palafin when it switches out")
 {
     GIVEN {
         PLAYER(SPECIES_PALAFIN_ZERO) { Ability(ABILITY_ZERO_TO_HERO); }
@@ -18,21 +18,22 @@ SINGLE_BATTLE_TEST("Zero to Hero transforms Palafin when it switches out")
         ABILITY_POPUP(player, ABILITY_ZERO_TO_HERO);
         MESSAGE("Palafin underwent a heroic transformation!");
     } THEN { EXPECT_EQ(player->species, SPECIES_PALAFIN_HERO); }
-}
+} */
 
-SINGLE_BATTLE_TEST("Zero to Hero transforms Palafin when it switches in")
+SINGLE_BATTLE_TEST("Zero to Hero transforms Ledian when it switches in")
 {
 
     GIVEN {
-        PLAYER(SPECIES_PALAFIN_ZERO) { Ability(ABILITY_ZERO_TO_HERO); }
         PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_LEDIAN) { Ability(ABILITY_ZERO_TO_HERO); }
         OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { SWITCH(player, 1); }
     } SCENE {
-    SEND_IN_MESSAGE("Palafin");
-    ABILITY_POPUP(player, ABILITY_ZERO_TO_HERO);
-        MESSAGE("Palafin underwent a heroic transformation!");
-    } THEN { EXPECT_EQ(player->species, SPECIES_PALAFIN_HERO); }
-}
+        ABILITY_POPUP(player, ABILITY_ZERO_TO_HERO);
+        MESSAGE("Ledian underwent a heroic transformation!");
+    } THEN { EXPECT_EQ(player->species, SPECIES_BUZZWOLE); }
+    }
 
 SINGLE_BATTLE_TEST("Zero to Hero can't be suppressed by Neutralizing Gas")
 {

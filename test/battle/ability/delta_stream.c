@@ -47,3 +47,24 @@ DOUBLE_BATTLE_TEST("Strong winds continue as long as there's a Pokémon with Del
         EXPECT(gBattleWeather & B_WEATHER_STRONG_WINDS);
     }
 }
+
+DOUBLE_BATTLE_TEST("Chloroplast's Sun persists as long as there's a Pokémon with Chloroplast on the field")
+{
+    GIVEN {
+        PLAYER(SPECIES_RAYQUAZA) { Ability(ABILITY_CHLOROPLAST); HP(1); }
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_RAYQUAZA) { Ability(ABILITY_CHLOROPLAST); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponentLeft, MOVE_SCRATCH, target: playerLeft); SEND_OUT(playerLeft, 2); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
+        HP_BAR(playerLeft, hp: 0);
+        MESSAGE("Rayquaza fainted!");
+        SEND_IN_MESSAGE("Wobbuffet");
+        NOT MESSAGE("The sunlight faded.");
+    } THEN {
+        EXPECT(gBattleWeather & B_WEATHER_SUN_CHLOROPLAST);
+    }
+}

@@ -1279,7 +1279,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_MAGICIAN] =
     {
         .name = _("Magician"),
-        .description = COMPOUND_STRING("Steals the foe's held item."),
+        .description = COMPOUND_STRING("Magic Guard + Iron Fist"),
         .aiRating = 3,
     },
 
@@ -2418,6 +2418,13 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Tae-Kwon-Do"),
         .description = COMPOUND_STRING("Boosts kicking moves."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_CHLOROPLAST] =
+    {
+        .name = _("Chloroplast"),
+        .description = COMPOUND_STRING("Acts as if in sunlight."),
         .aiRating = 8,
     },
 };

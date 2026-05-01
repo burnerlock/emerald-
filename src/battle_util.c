@@ -220,6 +220,17 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
         .endMessage = B_MSG_WEATHER_END_STRONG_WINDS,
         .continuesMessage = B_MSG_WEATHER_TURN_STRONG_WINDS,
         .animation = B_ANIM_STRONG_WINDS,
+    }, 
+    
+    [BATTLE_WEATHER_SUN_CHLOROPLAST] =
+    {
+        .flag = B_WEATHER_SUN_CHLOROPLAST,
+        .rock = HOLD_EFFECT_NONE,
+        .abilityStartMessage = B_MSG_STARTED_DROUGHT,
+        .moveStartMessage = B_MSG_STARTED_DROUGHT,
+        .endMessage = B_MSG_WEATHER_END_SUN,
+        .continuesMessage = B_MSG_WEATHER_TURN_SUN,
+        .animation = B_ANIM_SUN_CONTINUES,
     },
 };
 
@@ -3380,6 +3391,15 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 BattleScriptCall(BattleScript_BlockedByPrimalWeather);
                 effect++;
             }
+            break; 
+        case ABILITY_CHLOROPLAST:
+            if (!shouldAbilityTrigger)
+                break;
+            if (TryChangeBattleWeather(battler, BATTLE_WEATHER_SUN_CHLOROPLAST, gLastUsedAbility))
+            {
+                BattleScriptCall(BattleScript_WeatherAbilityActivates);
+                effect++;
+            }
             break;
         case ABILITY_SNOW_WARNING:
             if (!shouldAbilityTrigger)
@@ -3585,8 +3605,15 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             }
             break;
         case ABILITY_ZERO_TO_HERO:
-            if (GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES) == SPECIES_PALAFIN_HERO
-             && !GetBattlerPartyState(battler)->transformZeroToHero)
+            if ((GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES) == SPECIES_PALAFIN_HERO
+            && !GetBattlerPartyState(battler)->transformZeroToHero))
+            {
+                GetBattlerPartyState(battler)->transformZeroToHero = TRUE;
+                BattleScriptCall(BattleScript_ZeroToHeroActivates);
+                effect++;
+            }
+            if ((GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES) == SPECIES_BUZZWOLE
+            && !GetBattlerPartyState(battler)->transformZeroToHero))
             {
                 GetBattlerPartyState(battler)->transformZeroToHero = TRUE;
                 BattleScriptCall(BattleScript_ZeroToHeroActivates);
@@ -3780,11 +3807,15 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
                 {
                 SOLAR_POWER_HP_DROP:
-                    SetPassiveDamageAmount(battler, GetNonDynamaxMaxHP(battler) / 8);
+                    SetPassiveDamageAmount(battler, GetNonDynamaxMaxHP(battler) / 10);
                     BattleScriptExecute(BattleScript_SolarPowerActivates);
                     effect++;
                 }
                 break;
+            case ABILITY_CHLOROPLAST:
+                goto SOLAR_POWER_HP_DROP;
+            case ABILITY_PROTOSYNTHESIS:
+                goto SOLAR_POWER_HP_DROP;
             case ABILITY_HEALER:
                 gBattleScripting.battler = BATTLE_PARTNER(battler);
                 if (IsBattlerAlive(gBattleScripting.battler)
@@ -6618,15 +6649,19 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx)
         break;
     case ABILITY_RECKLESS:
         if (moveEffect == EFFECT_RECOIL || moveEffect == EFFECT_RECOIL_IF_MISS)
-           modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+           modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
         break;
     case ABILITY_IRON_FIST:
         if (IsPunchingMove(move))
-           modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+           modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
+        break;
+    case ABILITY_MAGIC_GUARD:
+        if (IsPunchingMove(move) && (SPECIES_HOOPA_UNBOUND))
+           modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
         break;
     case ABILITY_TAEKWONDO:
         if (IsKickingMove(move))
-            modifier =uq4_12_multiply(modifier, UQ_4_12(1.33));
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
         break;
     case ABILITY_SHEER_FORCE:
         if (MoveIsAffectedBySheerForce(move))
@@ -6691,13 +6726,17 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx)
         if (IsSoundMove(move))
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         break;
+    case ABILITY_STANCE_CHANGE:
+        if(IsSlicingMove(move))
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
+        break;
     case ABILITY_STEELY_SPIRIT:
         if (moveType == TYPE_STEEL)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
     case ABILITY_SHARPNESS:
         if (IsSlicingMove(move))
-           modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+           modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
         break;
     case ABILITY_SUPREME_OVERLORD:
         modifier = uq4_12_multiply(modifier, GetSupremeOverlordModifier(battlerAtk));
@@ -6947,6 +6986,10 @@ static inline u32 CalcAttackStat(struct BattleContext *ctx)
         if (IsBattleMovePhysical(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
+    /* case ABILITY_CHLOROPLAST:
+        if (moveType == TYPE_FIRE || moveType == TYPE_GRASS)
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.33));
+        break; */
     case ABILITY_SLOW_START:
         if (gBattleMons[battlerAtk].volatiles.slowStartTimer > 0)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
@@ -7034,16 +7077,21 @@ static inline u32 CalcAttackStat(struct BattleContext *ctx)
         if (moveType == TYPE_ROCK)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
-    case ABILITY_PROTOSYNTHESIS:
+    case ABILITY_PROTOSYNTHESIS: 
+       
         if (!(gBattleMons[battlerAtk].volatiles.transformed))
         {
             enum Stat atkHighestStat = GetParadoxBoostedStatId(battlerAtk);
             if (ctx->weather & B_WEATHER_SUN || gBattleMons[battlerAtk].volatiles.boosterEnergyActivated)
             {
                 if ((IsBattleMovePhysical(move) && atkHighestStat == STAT_ATK) || (IsBattleMoveSpecial(move) && atkHighestStat == STAT_SPATK))
-                    modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
+                    modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
             }
+            
         }
+        if (IsBattleMovePhysical(move) || IsBattleMoveSpecial(move)){
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
+            }
         break;
     case ABILITY_QUARK_DRIVE:
         if (!(gBattleMons[battlerAtk].volatiles.transformed))
@@ -7078,6 +7126,12 @@ static inline u32 CalcAttackStat(struct BattleContext *ctx)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
             if (ctx->updateFlags)
                 RecordAbilityBattle(battlerDef, ABILITY_THICK_FAT);
+        }
+        break;
+    case ABILITY_ZERO_TO_HERO:
+     if (moveType == TYPE_FLYING || moveType == TYPE_PSYCHIC || moveType == TYPE_FAIRY)
+        {
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
         }
         break;
     case ABILITY_PURIFYING_SALT:
@@ -7264,7 +7318,7 @@ static inline u32 CalcDefenseStat(struct BattleContext *ctx)
             if (((ctx->weather & B_WEATHER_SUN && HasWeatherEffect()) || gBattleMons[battlerDef].volatiles.boosterEnergyActivated)
              && ((IsBattleMovePhysical(move) && defHighestStat == STAT_DEF) || (IsBattleMoveSpecial(move) && defHighestStat == STAT_SPDEF))
              && !(gBattleMons[battlerDef].volatiles.transformed))
-                modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
+                modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
         }
         break;
     case ABILITY_QUARK_DRIVE:
@@ -7389,7 +7443,7 @@ static uq4_12_t GetWeatherDamageModifier(struct BattleContext *ctx)
 {
     if (ctx->weather == B_WEATHER_NONE)
         return UQ_4_12(1.0);
-    if (GetMoveEffect(ctx->move) == EFFECT_HYDRO_STEAM && (ctx->weather & B_WEATHER_SUN) && ctx->holdEffectAtk != HOLD_EFFECT_UTILITY_UMBRELLA)
+    if (GetMoveEffect(ctx->move) == EFFECT_HYDRO_STEAM && (ctx->weather & (B_WEATHER_SUN || B_WEATHER_SUN_CHLOROPLAST) ) && ctx->holdEffectAtk != HOLD_EFFECT_UTILITY_UMBRELLA)
         return UQ_4_12(1.5);
     if (ctx->holdEffectDef == HOLD_EFFECT_UTILITY_UMBRELLA)
         return UQ_4_12(1.0);
