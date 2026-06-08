@@ -15,10 +15,6 @@ MoveTutor_EventScript_SwaggerTaught::
 	release
 	end
 
- MoveTutor_EventScript_ElementalPunchesTutor::
-	lock
-	faceplayer
-
 MauvilleCity_EventScript_RolloutTutor::
 	lock
 	faceplayer

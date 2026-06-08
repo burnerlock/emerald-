@@ -848,7 +848,7 @@ DOUBLE_BATTLE_TEST("Dancer copies Lunar Dance after the original user faints, bu
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LUNAR_DANCE, playerLeft);
         HP_BAR(playerLeft, hp: 0);
-        MESSAGE("Wobbuffet fainted!");
+        ("Wobbuffet fainted!");
         ABILITY_POPUP(playerRight, ABILITY_DANCER);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_LUNAR_DANCE, playerRight);
         HP_BAR(playerRight, hp: 0);

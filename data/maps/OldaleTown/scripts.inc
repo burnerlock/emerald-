@@ -25,6 +25,53 @@ OldaleTown_EventScript_MoveMartEmployee::
 	setobjectmovementtype LOCALID_OLDALE_MART_EMPLOYEE, MOVEMENT_TYPE_FACE_DOWN
 	return
 
+MoveTutor_EventScript_ElementalPunchesTutor::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_TutorTeachMove, MSGBOX_DEFAULT
+	multichoice 0, 0, MULTI_ELEMENTAL_PUNCHES, FALSE
+	switch VAR_RESULT
+	case 0, MoveTutor_EventScript_IcePunchTutor
+	case 1, MoveTutor_EventScript_FirePunchTutor
+	case 2, MoveTutor_EventScript_ThunderPunchTutor
+	end
+	
+MoveTutor_EventScript_IcePunchTutor::
+	closemessage
+	move_tutor MOVE_ICE_PUNCH, MoveTutor_Text_TutorTeachMove, MoveTutor_Text_TutorWhichMon, MoveTutor_EventScript_TutorDeclined, MoveTutor_EventScript_TutorTaught
+	releaseall
+	end
+
+MoveTutor_EventScript_FirePunchTutor::
+	closemessage
+	move_tutor MOVE_FIRE_PUNCH, MoveTutor_Text_TutorTeachMove, MoveTutor_Text_TutorWhichMon, MoveTutor_EventScript_TutorDeclined, MoveTutor_EventScript_TutorTaught
+	releaseall
+	end
+
+MoveTutor_EventScript_ThunderPunchTutor::
+	closemessage
+	move_tutor MOVE_THUNDER_PUNCH, MoveTutor_Text_TutorTeachMove, MoveTutor_Text_TutorWhichMon, MoveTutor_EventScript_TutorDeclined, MoveTutor_EventScript_TutorTaught
+	releaseall
+	end
+
+MoveTutor_EventScript_ThunderPunchTutor::
+	closemessage
+	move_tutor MOVE_THUNDER_PUNCH, MoveTutor_Text_TutorTeachMove, MoveTutor_Text_TutorWhichMon, MoveTutor_EventScript_TutorDeclined, MoveTutor_EventScript_TutorTaught
+	releaseall
+	end
+
+MoveTutor_EventScript_TutorTaught::
+	msgbox MoveTutor_Text_TutorDeclinedTaught, MSGBOX_DEFAULT
+	waitmessage
+	releaseall
+	end
+
+MoveTutor_EventScript_TutorDeclined::
+	msgbox MoveTutor_Text_TutorDeclinedTaught, MSGBOX_DEFAULT
+	waitmessage
+	releaseall
+	end
+
 OldaleTown_EventScript_TownSign::
 	msgbox OldaleTown_Text_TownSign, MSGBOX_SIGN
 	end
