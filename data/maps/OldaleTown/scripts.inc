@@ -54,12 +54,6 @@ MoveTutor_EventScript_ThunderPunchTutor::
 	releaseall
 	end
 
-MoveTutor_EventScript_ThunderPunchTutor::
-	closemessage
-	move_tutor MOVE_THUNDER_PUNCH, MoveTutor_Text_TutorTeachMove, MoveTutor_Text_TutorWhichMon, MoveTutor_EventScript_TutorDeclined, MoveTutor_EventScript_TutorTaught
-	releaseall
-	end
-
 MoveTutor_EventScript_TutorTaught::
 	msgbox MoveTutor_Text_TutorDeclinedTaught, MSGBOX_DEFAULT
 	waitmessage
