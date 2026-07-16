@@ -888,10 +888,10 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
     [SPECIES_GRENINJA_MEGA] =
     {
         .baseHP        = 72,
-        .baseAttack    = 125,
+        .baseAttack    = 134,
         .baseDefense   = 77,
-        .baseSpeed     = 142,
-        .baseSpAttack  = 133,
+        .baseSpeed     = 147,
+        .baseSpAttack  = 143,
         .baseSpDefense = 81,
         .types = MON_TYPES(TYPE_WATER, TYPE_DARK),
         .catchRate = 45,
@@ -902,7 +902,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1),
-        .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_PROTEAN },
+        .abilities = { ABILITY_PROTEAN, ABILITY_NONE, ABILITY_PROTEAN },
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = TRUE,
         .speciesName = _("Greninja"),
@@ -3181,7 +3181,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_DUSK_STONE, SPECIES_AEGISLASH_SHIELD}),
     },
 
-#define AEGISLASH_MAIN_STAT (P_UPDATED_STATS >= GEN_8 ? 150 : 150)
+#define AEGISLASH_MAIN_STAT (P_UPDATED_STATS >= GEN_8 ? 140 : 150)
 
     [SPECIES_AEGISLASH_SHIELD] =
     {
@@ -5213,15 +5213,15 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sSliggooLevelUpLearnset,
         .teachableLearnset = sSliggooTeachableLearnset,
         .formSpeciesIdTable = sSliggooFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 50, SPECIES_GOODRA, CONDITIONS({IF_WEATHER, WEATHER_RAIN})},
-                                {EVO_LEVEL, 50, SPECIES_GOODRA, CONDITIONS({IF_WEATHER, WEATHER_FOG})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_GOODRA, CONDITIONS({IF_WEATHER, WEATHER_RAIN})},
+                                {EVO_LEVEL, 40, SPECIES_GOODRA, CONDITIONS({IF_WEATHER, WEATHER_FOG})}),
     },
 
     [SPECIES_GOODRA] =
     {
         .baseHP        = 110,
-        .baseAttack    = 100,
-        .baseDefense   = 80,
+        .baseAttack    = 80,
+        .baseDefense   = 100,
         .baseSpeed     = 60,
         .baseSpAttack  = 110,
         .baseSpDefense = 140,
@@ -5234,7 +5234,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = 35,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_DRAGON),
-        .abilities = { ABILITY_POISON_HEAL, ABILITY_HYDRATION, ABILITY_GOOEY },
+        .abilities = { ABILITY_POISON_HEAL, ABILITY_REGENERATOR, ABILITY_GOOEY },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Goodra"),
         .cryId = CRY_GOODRA,
@@ -7372,11 +7372,11 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
 
     [SPECIES_HOOPA_UNBOUND] =
     {
-        .baseHP        = 90,
-        .baseAttack    = 140,
+        .baseHP        = 80,
+        .baseAttack    = 135,
         .baseDefense   = 60,
         .baseSpeed     = 90,
-        .baseSpAttack  = 130,
+        .baseSpAttack  = 115,
         .baseSpDefense = 110,
         .types = MON_TYPES(TYPE_DARK, TYPE_FIGHTING),
         .catchRate = 3,

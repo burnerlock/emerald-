@@ -898,6 +898,11 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	message LittlerootTown_Text_SwitchShoesWithRunningShoes
 	waitfanfare
 	setflag FLAG_RECEIVED_RUNNING_SHOES
+	giveitem ITEM_MACH_BIKE
+	giveitem ITEM_ACRO_BIKE
+	playfanfare MUS_OBTAIN_ITEM
+	waitfanfare
+	setflag FLAG_RECEIVED_BIKE
 	msgbox LittlerootTown_Text_ExplainRunningShoes, MSGBOX_DEFAULT
 	msgbox LittlerootTown_Text_ComeHomeIfAnythingHappens, MSGBOX_DEFAULT
 	closemessage
