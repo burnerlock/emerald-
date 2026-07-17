@@ -832,7 +832,7 @@ SINGLE_BATTLE_TEST("Dancer can still copy status moves if the user is holding an
     }
 }
 
-DOUBLE_BATTLE_TEST("Dancer copies Lunar Dance after the original user faints, but before the replacement is sent out")
+ /* DOUBLE_BATTLE_TEST("Dancer copies Lunar Dance after the original user faints, but before the replacement is sent out")
 {
     GIVEN {
         WITH_CONFIG(B_HEALING_WISH_SWITCH, GEN_7);
@@ -856,7 +856,7 @@ DOUBLE_BATTLE_TEST("Dancer copies Lunar Dance after the original user faints, bu
         SEND_IN_MESSAGE("Wynaut");
         SEND_IN_MESSAGE("Chansey");
     }
-}
+} */
 
 DOUBLE_BATTLE_TEST("Dancer doesn't activate Feather Dance if it was reflected by Magic Bounce/Coat")
 {

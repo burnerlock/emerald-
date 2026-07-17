@@ -15,23 +15,6 @@ MoveTutor_EventScript_SwaggerTaught::
 	release
 	end
 
-MauvilleCity_EventScript_RolloutTutor::
-	lock
-	faceplayer
-	move_tutor MOVE_ROLLOUT, MoveTutor_Text_RolloutTeach, MoveTutor_Text_RolloutWhichMon, MoveTutor_EventScript_RolloutDeclined, MoveTutor_EventScript_RolloutTaught, FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT
-	release
-	end
-
-MoveTutor_EventScript_RolloutDeclined::
-	msgbox MoveTutor_Text_RolloutDeclined, MSGBOX_DEFAULT
-	release
-	end
-
-MoveTutor_EventScript_RolloutTaught::
-	msgbox MoveTutor_Text_RolloutTaught, MSGBOX_DEFAULT
-	release
-	end
-
 VerdanturfTown_PokemonCenter_1F_EventScript_FuryCutterTutor::
 	lock
 	faceplayer
@@ -160,6 +143,68 @@ MoveTutor_EventScript_ExplosionTaught::
 	release
 	end
 
+MauvilleCity_EventScript_RockSlideTutor::
+	lock
+	faceplayer
+	move_tutor MOVE_ROCK_SLIDE, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_ElementalMoves::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_MultichoiceTeachMove, MSGBOX_DEFAULT
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, MoveTutor_Text_IcePunch, MoveTutor_Text_FirePunch, MoveTutor_Text_ThunderPunch, MoveTutor_Text_IceFang, MoveTutor_Text_FireFang, MoveTutor_Text_ThunderFang
+	switch VAR_RESULT
+	case 0, MoveTutor_IcePunch
+	case 1, MoveTutor_FirePunch
+	case 2, MoveTutor_ThunderPunch
+	case 3, MoveTutor_IceFang
+	case 4, MoveTutor_FireFang
+	case 5, MoveTutor_ThunderFang
+	
+MoveTutor_IcePunch::
+	move_tutor MOVE_ICE_PUNCH, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_FirePunch::
+	move_tutor MOVE_FIRE_PUNCH, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	releaseall
+	end
+
+MoveTutor_ThunderPunch::
+	move_tutor MOVE_THUNDER_PUNCH, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	releaseall
+	end
+
+MoveTutor_IceFang::
+	move_tutor MOVE_ICE_FANG, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	releaseall
+	end
+
+MoveTutor_FireFang::
+	move_tutor MOVE_FIRE_FANG, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	releaseall
+	end
+
+MoveTutor_ThunderFang::
+	move_tutor MOVE_THUNDER_FANG, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	releaseall
+	end
+
+MoveTutor_Taught::
+	msgbox MoveTutor_Text_DeclinedTaught, MSGBOX_DEFAULT
+	waitmessage
+	releaseall
+	end
+
+MoveTutor_Declined::
+	msgbox MoveTutor_Text_DeclinedTaught, MSGBOX_DEFAULT
+	waitmessage
+	releaseall
+	end
+
 MoveTutor_EventScript_OpenPartyMenu::
 	special ChooseMonForMoveTutor
 	waitstate
@@ -183,3 +228,37 @@ MoveTutor_AfterChooseBoxMon::
 	special CanTeachMoveBoxMon
 	waitstate
 	return
+
+MoveTutor_Text_TeachMove:
+	.string "Would you like me to teach this move\n"
+	.string "to your Pokémon?$"
+
+MoveTutor_Text_MultichoiceTeachMove:
+	.string "Which move would you like me to teach\n"
+	.string "to your Pokémon?$"
+
+MoveTutor_Text_WhichMon:
+	.string "Which Pokémon would you like to learn\n"
+	.string "this move?$"
+
+MoveTutor_Text_DeclinedTaught:
+	.string "Come again when you need me\n"
+	.string "to teach your Pokémon a new move.$"
+
+MoveTutor_Text_FirePunch:
+	.string "Fire Punch$"
+
+MoveTutor_Text_IcePunch:
+	.string "Ice Punch$"
+
+MoveTutor_Text_ThunderPunch:
+	.string "Thunder Punch$"
+
+MoveTutor_Text_IceFang:
+	.string "Ice Fang$"
+
+MoveTutor_Text_FireFang:
+	.string "Fire Fang$"
+
+MoveTutor_Text_ThunderFang:
+	.string "Thunder Fang$"

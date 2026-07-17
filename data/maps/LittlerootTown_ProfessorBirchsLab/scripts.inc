@@ -532,6 +532,9 @@ LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
 	giveitem ITEM_POKE_BALL, 20
 	giveitem ITEM_GREAT_BALL, 10
 	giveitem ITEM_ULTRA_BALL, 5
+	giveitem ITEM_ABILITY_CAPSULE, 99
+	giveitem ITEM_ABILITY_PATCH, 99
+	giveitem ITEM_AMULET_COIN, 1
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0

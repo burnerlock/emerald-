@@ -1088,7 +1088,7 @@ static const struct MenuAction sMultichoiceList_HOF_Eggs_Victories_Quit[] = {
     { gText_ShopQuit }
 };
 
-static const struct MenuAction sMultichoiceList_Elemental_Punches[] = {
+static const struct MenuAction sMultichoiceList_Elemental_Moves[] = {
     { COMPOUND_STRING("Fire Punch") },
     { COMPOUND_STRING("Ice Punch") },
     { COMPOUND_STRING("Thunder Punch") },
@@ -1266,7 +1266,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_HOF_VICTORIES_QUIT]                         = MULTICHOICE(sMultichoiceList_HOF_Victories_Quit),
     [MULTI_EGGS_VICTORIES_QUIT]                        = MULTICHOICE(sMultichoiceList_Eggs_Victories_Quit),
     [MULTI_HOF_EGGS_VICTORIES_QUIT]                    = MULTICHOICE(sMultichoiceList_HOF_Eggs_Victories_Quit),
-    [MULTI_ELEMENTAL_PUNCHES]                          = MULTICHOICE(sMultichoiceList_Elemental_Punches), 
+    [MULTI_ELEMENTAL_MOVES]                            = MULTICHOICE(sMultichoiceList_Elemental_Moves), 
 };
 
 const u8 *const gStdStrings[] =

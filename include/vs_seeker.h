@@ -11,6 +11,6 @@ u16 GetRematchTrainerIdVSSeeker(u16 trainerId);
 bool32 IsVsSeekerEnabled(void);
 void NativeVsSeekerRematchId(struct ScriptContext *ctx);
 
-#define VSSEEKER_RECHARGE_STEPS 100
+#define VSSEEKER_RECHARGE_STEPS 50
 
 #endif //GUARD_VS_SEEKER_H

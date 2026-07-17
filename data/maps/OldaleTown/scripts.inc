@@ -10,10 +10,24 @@ OldaleTown_OnTransition:
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 	end
 
+MoveTutor_LavaridgeTown::	
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_MultichoiceTeachMove, MSGBOX_DEFAULT
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, MoveTutor_Text_EarthPower, MoveTutor_Text_Liquidation, MoveTutor_Text_AuraSphere, MoveTutor_Text_GunkShot, MoveTutor_Text_AquaTail, MoveTutor_Text_IronHead, MoveTutor_Text_FlashCannon, MoveTutor_Text_DragonPulse, MoveTutor_Text_ZenHeadbutt
+	switch VAR_RESULT
+	case 0, MoveTutor_EarthPower
+	case 1, MoveTutor_Liquidation
+	case 2, MoveTutor_AuraSphere
+	case 3, MoveTutor_GunkShot
+	case 4, MoveTutor_AquaTail
+	
+
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE
 OldaleTown_EventScript_SetOldaleState::
 	setvar VAR_OLDALE_TOWN_STATE, 1
 	return
+
 
 OldaleTown_EventScript_BlockWestEntrance::
 	setobjectxyperm LOCALID_FOOTPRINTS_MAN, 1, 11
@@ -24,47 +38,6 @@ OldaleTown_EventScript_MoveMartEmployee::
 	setobjectxyperm LOCALID_OLDALE_MART_EMPLOYEE, 13, 14
 	setobjectmovementtype LOCALID_OLDALE_MART_EMPLOYEE, MOVEMENT_TYPE_FACE_DOWN
 	return
-
-MoveTutor_EventScript_ElementalPunchesTutor::
-	lock
-	faceplayer
-	msgbox MoveTutor_Text_TutorTeachMove, MSGBOX_DEFAULT
-	multichoice 0, 0, MULTI_ELEMENTAL_PUNCHES, FALSE
-	switch VAR_RESULT
-	case 0, MoveTutor_EventScript_IcePunchTutor
-	case 1, MoveTutor_EventScript_FirePunchTutor
-	case 2, MoveTutor_EventScript_ThunderPunchTutor
-	end
-	
-MoveTutor_EventScript_IcePunchTutor::
-	closemessage
-	move_tutor MOVE_ICE_PUNCH, MoveTutor_Text_TutorTeachMove, MoveTutor_Text_TutorWhichMon, MoveTutor_EventScript_TutorDeclined, MoveTutor_EventScript_TutorTaught
-	releaseall
-	end
-
-MoveTutor_EventScript_FirePunchTutor::
-	closemessage
-	move_tutor MOVE_FIRE_PUNCH, MoveTutor_Text_TutorTeachMove, MoveTutor_Text_TutorWhichMon, MoveTutor_EventScript_TutorDeclined, MoveTutor_EventScript_TutorTaught
-	releaseall
-	end
-
-MoveTutor_EventScript_ThunderPunchTutor::
-	closemessage
-	move_tutor MOVE_THUNDER_PUNCH, MoveTutor_Text_TutorTeachMove, MoveTutor_Text_TutorWhichMon, MoveTutor_EventScript_TutorDeclined, MoveTutor_EventScript_TutorTaught
-	releaseall
-	end
-
-MoveTutor_EventScript_TutorTaught::
-	msgbox MoveTutor_Text_TutorDeclinedTaught, MSGBOX_DEFAULT
-	waitmessage
-	releaseall
-	end
-
-MoveTutor_EventScript_TutorDeclined::
-	msgbox MoveTutor_Text_TutorDeclinedTaught, MSGBOX_DEFAULT
-	waitmessage
-	releaseall
-	end
 
 OldaleTown_EventScript_TownSign::
 	msgbox OldaleTown_Text_TownSign, MSGBOX_SIGN

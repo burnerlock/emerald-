@@ -167,6 +167,17 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
         .animation = B_ANIM_SUN_CONTINUES,
     },
 
+    [BATTLE_WEATHER_SUN_CHLOROPLAST] =
+    {
+        .flag = B_WEATHER_SUN_CHLOROPLAST,
+        .rock = HOLD_EFFECT_HEAT_ROCK,
+        .abilityStartMessage = B_MSG_STARTED_DROUGHT,
+        .moveStartMessage = B_MSG_STARTED_DROUGHT,
+        .endMessage = B_MSG_WEATHER_END_SUN,
+        .continuesMessage = B_MSG_WEATHER_TURN_SUN,
+        .animation = B_ANIM_SUN_CONTINUES,
+    },
+
     [BATTLE_WEATHER_SANDSTORM] =
     {
         .flag = B_WEATHER_SANDSTORM,
@@ -222,16 +233,6 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
         .animation = B_ANIM_STRONG_WINDS,
     }, 
     
-    [BATTLE_WEATHER_SUN_CHLOROPLAST] =
-    {
-        .flag = B_WEATHER_SUN_CHLOROPLAST,
-        .rock = HOLD_EFFECT_NONE,
-        .abilityStartMessage = B_MSG_STARTED_DROUGHT,
-        .moveStartMessage = B_MSG_STARTED_DROUGHT,
-        .endMessage = B_MSG_WEATHER_END_SUN,
-        .continuesMessage = B_MSG_WEATHER_TURN_SUN,
-        .animation = B_ANIM_SUN_CONTINUES,
-    },
 };
 
 u32 GetCurrentBattleWeather(void)
@@ -2115,6 +2116,8 @@ bool32 TryChangeBattleWeather(enum BattlerId battler, u32 battleWeatherId, enum 
 
     else if (gBattleWeather & B_WEATHER_PRIMAL_ANY
           && ability != ABILITY_DESOLATE_LAND
+          && ability != ABILITY_CHLOROPLAST
+          && ability != ABILITY_PROTOSYNTHESIS
           && ability != ABILITY_PRIMORDIAL_SEA
           && ability != ABILITY_DELTA_STREAM)
     {
@@ -3392,15 +3395,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 effect++;
             }
             break; 
-        case ABILITY_CHLOROPLAST:
-            if (!shouldAbilityTrigger)
-                break;
-            if (TryChangeBattleWeather(battler, BATTLE_WEATHER_SUN_CHLOROPLAST, gLastUsedAbility))
-            {
-                BattleScriptCall(BattleScript_WeatherAbilityActivates);
-                effect++;
-            }
-            break;
         case ABILITY_SNOW_WARNING:
             if (!shouldAbilityTrigger)
                 break;
@@ -3534,6 +3528,24 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             if (!shouldAbilityTrigger)
                 break;
             if (TryChangeBattleWeather(battler, BATTLE_WEATHER_SUN_PRIMAL, gLastUsedAbility))
+            {
+                BattleScriptCall(BattleScript_WeatherAbilityActivates);
+                effect++;
+            }
+            break;
+        case ABILITY_CHLOROPLAST:
+            if (!shouldAbilityTrigger)
+                break;
+            if (TryChangeBattleWeather(battler, BATTLE_WEATHER_SUN_CHLOROPLAST, gLastUsedAbility))
+            {
+                BattleScriptCall(BattleScript_WeatherAbilityActivates);
+                effect++;
+            }
+            break;
+        case ABILITY_PROTOSYNTHESIS:
+            if (!shouldAbilityTrigger)
+                break;
+            if (TryChangeBattleWeather(battler, BATTLE_WEATHER_SUN_CHLOROPLAST, gLastUsedAbility))
             {
                 BattleScriptCall(BattleScript_WeatherAbilityActivates);
                 effect++;
@@ -4862,7 +4874,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             }
             break;
         }
-        case ABILITY_PROTOSYNTHESIS:
+       /* case ABILITY_PROTOSYNTHESIS:
             if (!gBattleMons[battler].volatiles.weatherAbilityDone
              && (gBattleWeather & B_WEATHER_SUN) && HasWeatherEffect()
              && !gBattleMons[battler].volatiles.transformed
@@ -4875,7 +4887,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 BattleScriptCall(BattleScript_ProtosynthesisActivates);
                 effect++;
             }
-            break;
+            break; */
         default:
             break;
         }
@@ -6639,6 +6651,13 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx)
         if (basePower <= 80)
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
+    case ABILITY_PROTOSYNTHESIS:
+        if (IsBattleMoveSpecial(move))
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
+        break;
+        if (IsBattleMovePhysical(move))
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
+        break;
     case ABILITY_FLARE_BOOST:
         if (gBattleMons[battlerAtk].status1 & STATUS1_BURN && IsBattleMoveSpecial(move))
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
@@ -6986,10 +7005,10 @@ static inline u32 CalcAttackStat(struct BattleContext *ctx)
         if (IsBattleMovePhysical(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
-    /* case ABILITY_CHLOROPLAST:
+    case ABILITY_CHLOROPLAST:
         if (moveType == TYPE_FIRE || moveType == TYPE_GRASS)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.33));
-        break; */
+        break; 
     case ABILITY_SLOW_START:
         if (gBattleMons[battlerAtk].volatiles.slowStartTimer > 0)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
