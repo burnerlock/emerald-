@@ -9,20 +9,7 @@ OldaleTown_OnTransition:
 	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 	end
-
-MoveTutor_LavaridgeTown::	
-	lock
-	faceplayer
-	msgbox MoveTutor_Text_MultichoiceTeachMove, MSGBOX_DEFAULT
-	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, MoveTutor_Text_EarthPower, MoveTutor_Text_Liquidation, MoveTutor_Text_AuraSphere, MoveTutor_Text_GunkShot, MoveTutor_Text_AquaTail, MoveTutor_Text_IronHead, MoveTutor_Text_FlashCannon, MoveTutor_Text_DragonPulse, MoveTutor_Text_ZenHeadbutt
-	switch VAR_RESULT
-	case 0, MoveTutor_EarthPower
-	case 1, MoveTutor_Liquidation
-	case 2, MoveTutor_AuraSphere
-	case 3, MoveTutor_GunkShot
-	case 4, MoveTutor_AquaTail
 	
-
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE
 OldaleTown_EventScript_SetOldaleState::
 	setvar VAR_OLDALE_TOWN_STATE, 1

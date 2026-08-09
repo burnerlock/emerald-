@@ -149,6 +149,429 @@ MauvilleCity_EventScript_RockSlideTutor::
 	move_tutor MOVE_ROCK_SLIDE, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
 	release
 	end
+MoveTutor_KickingMoves::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_MultichoiceTeachMove, MSGBOX_DEFAULT 
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, MoveTutor_Text_HighJumpKick, MoveTutor_Text_MegaKick, MoveTutor_Text_BlazeKick, MoveTutor_Text_ThunderousKick, MoveTutor_Text_TropKick, MoveTutor_Text_TripleAxel, MoveTutor_Text_HighHorsepower, MoveTutor_Text_StompingTantrum, MoveTutor_Text_RollingKick, MoveTutor_Text_AxeKick, MoveTutor_Text_PyroBall
+	switch VAR_RESULT
+	case 0, MoveTutor_HighJumpKick
+	case 1, MoveTutor_MegaKick
+	case 2, MoveTutor_BlazeKick
+	case 3, MoveTutor_ThunderousKick
+	case 4, MoveTutor_TropKick
+	case 5, MoveTutor_TripleAxel
+	case 6, MoveTutor_HighHorsepower
+	case 7, MoveTutor_StompingTantrum
+	case 8, MoveTutor_RollingKick
+	case 9, MoveTutor_AxeKick
+	case 10, MoveTutor_PyroBall
+
+MoveTutor_HighJumpKick::
+	move_tutor MOVE_HIGH_JUMP_KICK, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_MegaKick::
+	move_tutor MOVE_MEGA_KICK, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_BlazeKick::
+	move_tutor MOVE_BLAZE_KICK, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_ThunderousKick::
+	move_tutor MOVE_THUNDEROUS_KICK, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_TropKick::
+	move_tutor MOVE_TROP_KICK, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_TripleAxel::
+	move_tutor MOVE_TRIPLE_AXEL, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_HighHorsepower::
+	move_tutor MOVE_HIGH_HORSEPOWER, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_StompingTantrum::
+	move_tutor MOVE_STOMPING_TANTRUM, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_RollingKick::
+	move_tutor MOVE_ROLLING_KICK, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_AxeKick::
+	move_tutor MOVE_AXE_KICK, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_PyroBall::
+	move_tutor MOVE_PYRO_BALL, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_Text_HighJumpKick:
+	.string "High Jump Kick$"
+
+MoveTutor_Text_MegaKick:
+	.string "Mega Kick$"
+
+MoveTutor_Text_BlazeKick:
+	.string "Blaze Kick$"
+
+MoveTutor_Text_ThunderousKick:
+	.string "Thunderous Kick$"
+
+MoveTutor_Text_TropKick:
+	.string "Trop Kick$"
+
+MoveTutor_Text_TripleAxel:
+	.string "Triple Axel$"
+
+MoveTutor_Text_HighHorsepower:
+	.string "High Horsepower$"
+
+MoveTutor_Text_StompingTantrum:
+	.string "Stomping Tantrum$"
+
+MoveTutor_Text_RollingKick:
+	.string "Rolling Kick$"
+
+MoveTutor_Text_AxeKick:
+	.string "Axe Kick$"
+
+MoveTutor_Text_PyroBall:
+	.string "Pyro Ball$"
+
+MoveTutor_MultihitMoves::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_MultichoiceTeachMove, MSGBOX_DEFAULT
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, MoveTutor_Text_ArmThrust, MoveTutor_Text_BoneRush, MoveTutor_Text_CometPunch, MoveTutor_Text_FuryAttack, MoveTutor_Text_IcicleSpear, MoveTutor_Text_PinMissile, MoveTutor_Text_RockBlast, MoveTutor_Text_ScaleShot, MoveTutor_Text_SpikeCannon, MoveTutor_Text_TailSlap, MoveTutor_Text_Twineedle
+	switch VAR_RESULT
+	case 0, MoveTutor_ArmThrust
+	case 1, MoveTutor_BoneRush
+	case 2, MoveTutor_CometPunch
+	case 3, MoveTutor_FuryAttack
+	case 4, MoveTutor_IcicleSpear
+	case 5, MoveTutor_PinMissile
+	case 6, MoveTutor_RockBlast
+	case 7, MoveTutor_ScaleShot
+	case 8, MoveTutor_SpikeCannon
+	case 9, MoveTutor_TailSlap
+	case 10, MoveTutor_Twineedle 
+
+MoveTutor_ArmThrust::
+	move_tutor MOVE_ARM_THRUST, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_BoneRush::
+	move_tutor MOVE_BONE_RUSH, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_CometPunch::
+	move_tutor MOVE_COMET_PUNCH, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_FuryAttack::
+	move_tutor MOVE_FURY_ATTACK, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_IcicleSpear::
+	move_tutor MOVE_ICICLE_SPEAR, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_PinMissile::
+	move_tutor MOVE_PIN_MISSILE, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_RockBlast::
+	move_tutor MOVE_ROCK_BLAST, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_ScaleShot::
+	move_tutor MOVE_SCALE_SHOT, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_SpikeCannon::
+	move_tutor MOVE_SPIKE_CANNON, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_TailSlap::
+	move_tutor MOVE_TAIL_SLAP, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_Twineedle::
+	move_tutor MOVE_TWINEEDLE, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_Text_ArmThrust:
+	.string "Arm Thrust$"
+
+MoveTutor_Text_BoneRush:
+	.string "Bone Rush$"
+
+MoveTutor_Text_CometPunch:
+	.string "Comet Punch$"
+
+MoveTutor_Text_FuryAttack:
+	.string "Fury Attack$"
+
+MoveTutor_Text_IcicleSpear:
+	.string "Icicle Spear$"
+
+MoveTutor_Text_PinMissile:
+	.string "Pin Missile$"
+
+MoveTutor_Text_RockBlast:
+	.string "Rock Blast$"
+
+MoveTutor_Text_ScaleShot:
+	.string "Scale Shot$"
+
+MoveTutor_Text_SpikeCannon:
+	.string "Spike Cannon$"
+
+MoveTutor_Text_TailSlap:
+	.string "Tail Slap$"
+
+MoveTutor_Text_Twineedle:
+	.string "Twineedle$"
+
+MoveTutor_VerdanturfTown::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_MultichoiceTeachMove, MSGBOX_DEFAULT
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, MoveTutor_Text_LeechLife, MoveTutor_Text_CloseCombat, MoveTutor_Text_FocusBlast, MoveTutor_Text_HeatWave, MoveTutor_Text_IceSpinner, MoveTutor_Text_PlayRough, MoveTutor_Text_SacredSword, MoveTutor_Text_SecretSword, MoveTutor_Text_Superpower, MoveTutor_Text_GlaiveRush, MoveTutor_Text_FlipTurn
+	switch VAR_RESULT
+	case 0, MoveTutor_LeechLife
+	case 1, MoveTutor_CloseCombat
+	case 2, MoveTutor_FocusBlast
+	case 3, MoveTutor_HeatWave
+	case 4, MoveTutor_IceSpinner
+	case 5, MoveTutor_PlayRough
+	case 6, MoveTutor_SacredSword
+	case 7, MoveTutor_SecretSword
+	case 8, MoveTutor_Superpower
+	case 9, MoveTutor_GlaiveRush
+	case 10, MoveTutor_FlipTurn
+
+MoveTutor_LeechLife::
+	move_tutor MOVE_LEECH_LIFE, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_CloseCombat::
+	move_tutor MOVE_CLOSE_COMBAT, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_FocusBlast::
+	move_tutor MOVE_FOCUS_BLAST, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_HeatWave::
+	move_tutor MOVE_HEAT_WAVE, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_IceSpinner::
+	move_tutor MOVE_ICE_SPINNER, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_PlayRough::
+	move_tutor MOVE_PLAY_ROUGH, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_SacredSword::
+	move_tutor MOVE_SACRED_SWORD, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_SecretSword::
+	move_tutor MOVE_SECRET_SWORD, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_Superpower::
+	move_tutor MOVE_SUPERPOWER, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_GlaiveRush::
+	move_tutor MOVE_GLAIVE_RUSH, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_FlipTurn::
+	move_tutor MOVE_FLIP_TURN, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_Text_LeechLife:
+	.string "Leech Life$"
+
+MoveTutor_Text_CloseCombat:
+	.string "Close Combat$"
+
+MoveTutor_Text_FocusBlast:
+	.string "Focus Blast$"
+	
+MoveTutor_Text_HeatWave:
+	.string "Heat Wave$"
+
+MoveTutor_Text_IceSpinner:
+	.string "Ice Spinner$"
+
+MoveTutor_Text_PlayRough:
+	.string "Play Rough$"
+
+MoveTutor_Text_SacredSword:
+	.string "Sacred Sword$"
+
+MoveTutor_Text_SecretSword:
+	.string "Secret Sword$"
+
+MoveTutor_Text_Superpower:
+	.string "Superpower$"
+
+MoveTutor_Text_GlaiveRush:
+	.string "Glaive Rush$"
+
+MoveTutor_Text_FlipTurn:
+	.string "Flip Turn$"
+
+MoveTutor_LavaridgeTown::	
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_MultichoiceTeachMove, MSGBOX_DEFAULT
+	dynmultichoice 0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, MoveTutor_Text_EarthPower, MoveTutor_Text_Liquidation, MoveTutor_Text_AuraSphere, MoveTutor_Text_GunkShot, MoveTutor_Text_AquaTail, MoveTutor_Text_IronHead, MoveTutor_Text_FlashCannon, MoveTutor_Text_DragonPulse, MoveTutor_Text_ZenHeadbutt, MoveTutor_Text_SeedBomb, MoveTutor_Text_PartingShot
+	switch VAR_RESULT
+	case 0, MoveTutor_EarthPower
+	case 1, MoveTutor_Liquidation
+	case 2, MoveTutor_AuraSphere
+	case 3, MoveTutor_GunkShot
+	case 4, MoveTutor_AquaTail
+	case 5, MoveTutor_IronHead
+	case 6, MoveTutor_FlashCannon
+	case 7, MoveTutor_DragonPulse
+	case 8, MoveTutor_ZenHeadbutt
+	case 9, MoveTutor_SeedBomb
+	case 10, MoveTutor_PartingShot
+
+MoveTutor_EarthPower::
+	move_tutor MOVE_EARTH_POWER, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_Liquidation::
+	move_tutor MOVE_LIQUIDATION, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_AuraSphere::
+	move_tutor MOVE_AURA_SPHERE, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_GunkShot::
+	move_tutor MOVE_GUNK_SHOT, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_AquaTail::
+	move_tutor MOVE_AQUA_TAIL, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_IronHead::
+	move_tutor MOVE_IRON_HEAD, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_FlashCannon::
+	move_tutor MOVE_FLASH_CANNON, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end	
+
+MoveTutor_DragonPulse::
+	move_tutor MOVE_DRAGON_PULSE, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_ZenHeadbutt::
+	move_tutor MOVE_ZEN_HEADBUTT, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_SeedBomb::
+	move_tutor MOVE_SEED_BOMB, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_PartingShot::
+	move_tutor MOVE_PARTING_SHOT, MoveTutor_Text_TeachMove, MoveTutor_Text_WhichMon, MoveTutor_Declined, MoveTutor_Taught
+	release
+	end
+
+MoveTutor_Text_EarthPower:
+	.string "Earth Power$"
+
+MoveTutor_Text_Liquidation:
+	.string "Liquidation$"
+
+MoveTutor_Text_AuraSphere:
+	.string "Aura Sphere$"
+
+MoveTutor_Text_GunkShot:
+	.string "Gunk Shot$"
+
+MoveTutor_Text_AquaTail:
+	.string "Aqua Tail$"
+
+MoveTutor_Text_IronHead:
+	.string "Iron Head$"
+
+MoveTutor_Text_FlashCannon:
+	.string "Flash Cannon$"
+
+MoveTutor_Text_DragonPulse:
+	.string "Dragon Pulse$"
+
+MoveTutor_Text_ZenHeadbutt:
+	.string "Zen Headbutt$"
+
+MoveTutor_Text_SeedBomb:
+	.string "Seed Bomb$"
+
+MoveTutor_Text_PartingShot:
+	.string "Parting Shot$"
 
 MoveTutor_ElementalMoves::
 	lock

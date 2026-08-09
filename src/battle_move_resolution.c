@@ -487,7 +487,7 @@ static enum CancelerResult CancelerChoiceLock(struct BattleContext *ctx)
 
     if (gChosenMove != MOVE_STRUGGLE
      && (*choicedMoveAtk == MOVE_NONE || *choicedMoveAtk == MOVE_UNAVAILABLE)
-     && (IsHoldEffectChoice(holdEffect) || ctx->abilityAtk == ABILITY_GORILLA_TACTICS))
+     && (IsHoldEffectChoice(holdEffect) || ctx->abilityAtk == ABILITY_GORILLA_TACTICS || ctx->abilityAtk == ABILITY_SAGE_POWER))
         *choicedMoveAtk = gChosenMove;
 
     u32 moveIndex;
@@ -2962,7 +2962,7 @@ static enum MoveEndResult MoveEndMoveBlock(void)
 
             gLastUsedItem = gBattleMons[gBattlerTarget].item;
             gBattleMons[gBattlerTarget].item = 0;
-            if (gBattleMons[gBattlerTarget].ability != ABILITY_GORILLA_TACTICS)
+            if (gBattleMons[gBattlerTarget].ability != ABILITY_GORILLA_TACTICS || gBattleMons[gBattlerTarget].ability != ABILITY_SAGE_POWER)
                 gBattleStruct->choicedMove[gBattlerTarget] = MOVE_NONE;
             CheckSetUnburden(gBattlerTarget);
 

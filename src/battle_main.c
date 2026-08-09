@@ -6065,6 +6065,10 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
     {
         return TYPE_WATER;
     }
+    if (IsSoundMove(move) && ability == ABILITY_SAND_SONG)
+    {
+        return TYPE_GROUND;
+    }
     else if (moveEffect == EFFECT_AURA_WHEEL
           && species == SPECIES_MORPEKO_HANGRY
           && ability != ABILITY_NORMALIZE)

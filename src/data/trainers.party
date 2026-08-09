@@ -16850,6 +16850,75 @@ Bulbasaur
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+=== TRAINER_ERIKA_1 ===
+Name: Erika
+Class: Leader
+Pic: Leader Erika Frlg
+Gender: Male
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Rillaboom (M) @ Leftovers  
+Ability: Grassy Surge  
+Level: 30  
+Tera Type: Grass  
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe  
+- Brick Break  
+- Grassy Glide  
+- Knock Off  
+- U-turn  
+
+Simisage (F) @ Choice Scarf  
+Ability: Libero  
+Level: 30  
+Tera Type: Grass  
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe  
+- Seed Bomb  
+- Grassy Glide  
+- Aura Sphere  
+- U-turn  
+
+Breloom (M) @ Focus Sash  
+Ability: Technician  
+Level: 30  
+Tera Type: Grass  
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe  
+- Mach Punch  
+- Bullet Seed  
+- Arm Thrust  
+- Spore  
+
+Scovillain (F) @ Miracle Seed  
+Ability: Protosynthesis  
+Level: 31  
+Tera Type: Grass  
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe  
+- Lava Plume  
+- Giga Drain  
+- Earth Power  
+- Grassy Glide  
+
+Sawsbuck (M) @ Leftovers  
+Ability: Sap Sipper  
+Level: 31  
+Tera Type: Normal  
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe  
+- Horn Leech  
+- Body Slam  
+- High Horsepower  
+- Trop Kick  
+
+Victreebel (F) @ Miracle Seed  
+Ability: Chlorophyll  
+Level: 32  
+Tera Type: Grass  
+IVs: 20 HP / 20 Def / 20 SpA / 20 SpD / 20 Spe  
+- Growth  
+- Sunny Day  
+- Poison Jab  
+- Giga Drain  
+
 === TRAINER_BRENDAN_PLACEHOLDER ===
 Name: BRENDAN
 Class: RS Protag

@@ -1294,7 +1294,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_COMPETITIVE] =
     {
         .name = _("Competitive"),
-        .description = COMPOUND_STRING("Lowered stats up Sp. Atk."),
+        .description = COMPOUND_STRING("KOs raise Sp.Atk."),
         .aiRating = 5,
     },
 
@@ -2425,6 +2425,41 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Chloroplast"),
         .description = COMPOUND_STRING("Acts as if in sunlight."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_BLADEMASTER] =
+    {
+        .name = _("Blademaster"),
+        .description = COMPOUND_STRING("Slicing moves are special"),
+        .aiRating = 8,
+    },
+
+    [ABILITY_SAGE_POWER] =
+    {
+        .name = _("Sage Power"),
+        .description = COMPOUND_STRING("Ups Atk/SpAtk and locks move."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_POWER_FISTS] =
+    {
+        .name = _("Power Fists"),
+        .description = COMPOUND_STRING("Punching moves are special."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_SAND_SONG] =
+    {
+        .name = _("Sand Song"),
+        .description = COMPOUND_STRING("Sound moves become Ground."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_MUAY_THAI] =
+    {
+        .name = _("Muay Thai"),
+        .description = COMPOUND_STRING("Kicking moves are special."),
         .aiRating = 8,
     },
 };
