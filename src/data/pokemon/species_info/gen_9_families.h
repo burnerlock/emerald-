@@ -4422,11 +4422,11 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
 #if P_FAMILY_CYCLIZAR
     [SPECIES_CYCLIZAR] =
     {
-        .baseHP        = 70,
-        .baseAttack    = 95,
+        .baseHP        = 100,
+        .baseAttack    = 100,
         .baseDefense   = 65,
         .baseSpeed     = 121,
-        .baseSpAttack  = 85,
+        .baseSpAttack  = 65,
         .baseSpDefense = 65,
         .types = MON_TYPES(TYPE_DRAGON, TYPE_NORMAL),
         .catchRate = 190,
@@ -4437,7 +4437,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_SHED_SKIN, ABILITY_NONE, ABILITY_REGENERATOR },
+        .abilities = { ABILITY_REGENERATOR, ABILITY_NONE, ABILITY_SHED_SKIN },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Cyclizar"),
         .cryId = CRY_CYCLIZAR,

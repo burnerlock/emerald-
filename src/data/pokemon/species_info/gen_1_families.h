@@ -20479,10 +20479,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     [SPECIES_MEWTWO_MEGA_X] =
     {
         .baseHP        = 106,
-        .baseAttack    = 190,
+        .baseAttack    = 154,
         .baseDefense   = 100,
         .baseSpeed     = 130,
-        .baseSpAttack  = 154,
+        .baseSpAttack  = 194,
         .baseSpDefense = 100,
         .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FIGHTING),
         .catchRate = 3,
@@ -20493,7 +20493,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = 0,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_STEADFAST, ABILITY_STEADFAST, ABILITY_STEADFAST },
+        .abilities = { ABILITY_POWER_FISTS, ABILITY_POWER_FISTS, ABILITY_POWER_FISTS },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Mewtwo"),
     #if P_MODIFIED_MEGA_CRIES

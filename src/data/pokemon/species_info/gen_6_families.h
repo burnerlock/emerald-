@@ -955,7 +955,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseSpeed     = 77,
         .baseSpAttack  = 32,
         .baseSpDefense = 56,
-        .types = MON_TYPES(TYPE_ICE, TYPE_GROUND),
+        .types = MON_TYPES(TYPE_GROUND, TYPE_NORMAL),
         .catchRate = 255,
         .expYield = 47,
         .evYield_Speed = 1,
@@ -1012,7 +1012,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sBunnelbyLevelUpLearnset,
         .teachableLearnset = sBunnelbyTeachableLearnset,
         .eggMoveLearnset = sBunnelbyEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_DIGGERSBY}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 23, SPECIES_DIGGERSBY}),
     },
 
     [SPECIES_DIGGERSBY] =
@@ -1023,7 +1023,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseSpeed     = 88,
         .baseSpAttack  = 50,
         .baseSpDefense = 77,
-        .types = MON_TYPES(TYPE_ICE, TYPE_GROUND),
+        .types = MON_TYPES(TYPE_GROUND, TYPE_FAIRY),
         .catchRate = 127,
         .expYield = 148,
         .evYield_HP = 2,
