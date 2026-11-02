@@ -3474,7 +3474,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 105,
         .baseSpAttack  = 54,
         .baseSpDefense = 96,
-        .types = MON_TYPES(TYPE_NORMAL, TYPE_FIGHTING),
+        .types = MON_TYPES(TYPE_FAIRY, TYPE_FIGHTING),
         .catchRate = 60,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 168 : 178,
         .evYield_Speed = 2,
@@ -3544,7 +3544,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 145,
         .baseSpAttack  = 54,
         .baseSpDefense = 106,
-        .types = MON_TYPES(TYPE_NORMAL, TYPE_FIGHTING),
+        .types = MON_TYPES(TYPE_FAIRY, TYPE_FIGHTING),
         .catchRate = 60,
         .expYield = 203,
         .evYield_Speed = 2,
@@ -4359,7 +4359,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         )
         .levelUpLearnset = sGabiteLevelUpLearnset,
         .teachableLearnset = sGabiteTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_GARCHOMP}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_GARCHOMP}),
     },
 
     [SPECIES_GARCHOMP] =
@@ -4529,8 +4529,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
     [SPECIES_GARCHOMP_MEGA_Z] =
     {
         .baseHP        = 118,
-        .baseAttack    = 95,
-        .baseDefense   = 90,
+        .baseAttack    = 90,
+        .baseDefense   = 95,
         .baseSpeed     = 141,
         .baseSpAttack  = 151,
         .baseSpDefense = 120,
@@ -5698,12 +5698,12 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 
     [SPECIES_ABOMASNOW] =
     {
-        .baseHP        = 100,
+        .baseHP        = 110,
         .baseAttack    = 122,
-        .baseDefense   = 85,
+        .baseDefense   = 90,
         .baseSpeed     = 50,
         .baseSpAttack  = 122,
-        .baseSpDefense = 95,
+        .baseSpDefense = 90,
         .types = MON_TYPES(TYPE_GRASS, TYPE_ICE),
         .catchRate = 60,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 173 : 214,
@@ -5781,12 +5781,12 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 #if P_MEGA_EVOLUTIONS
     [SPECIES_ABOMASNOW_MEGA] =
     {
-        .baseHP        = 90,
+        .baseHP        = 120,
         .baseAttack    = 132,
-        .baseDefense   = 105,
+        .baseDefense   = 100,
         .baseSpeed     = 30,
         .baseSpAttack  = 132,
-        .baseSpDefense = 105,
+        .baseSpDefense = 100,
         .types = MON_TYPES(TYPE_GRASS, TYPE_ICE),
         .catchRate = 60,
         .expYield = 208,

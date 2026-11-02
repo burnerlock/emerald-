@@ -4765,11 +4765,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     [SPECIES_NIDORINO] =
     {
         .baseHP        = 61,
-        .baseAttack    = 72,
+        .baseAttack    = 66,
         .baseDefense   = 57,
-        .baseSpeed     = 65,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 55,
+        .baseSpeed     = 70,
+        .baseSpAttack  = 72,
+        .baseSpDefense = 60,
         .types = MON_TYPES(TYPE_POISON, TYPE_GROUND),
         .catchRate = 120,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 128 : 118,
@@ -4836,13 +4836,13 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 
     [SPECIES_NIDOKING] =
     {
-        .baseHP        = 81,
-        .baseAttack    = P_UPDATED_STATS >= GEN_6 ? 102 : 92,
+        .baseHP        = 91,
+        .baseAttack    = P_UPDATED_STATS >= GEN_6 ? 72 : 92,
         .baseDefense   = 77,
-        .baseSpeed     = 95,
+        .baseSpeed     = 100,
         .baseSpAttack  = P_UPDATED_STATS >= GEN_2 ? 102 : 75,
-        .baseSpDefense = 75,
-        .types = MON_TYPES(TYPE_GROUND, TYPE_FAIRY),
+        .baseSpDefense = 100,
+        .types = MON_TYPES(TYPE_POISON, TYPE_FAIRY),
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 253,
@@ -7020,7 +7020,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 
 #if P_FAMILY_MEOWTH
 #if P_UPDATED_ABILITIES >= GEN_4
-    #define MEOWTH_ABILITIES { ABILITY_PICKUP, ABILITY_TECHNICIAN, ABILITY_UNNERVE }
+    #define MEOWTH_ABILITIES { ABILITY_FELINE_PROWESS, ABILITY_TECHNICIAN, ABILITY_UNNERVE }
 #else
     #define MEOWTH_ABILITIES { ABILITY_PICKUP, ABILITY_NONE, ABILITY_UNNERVE }
 #endif
@@ -7028,10 +7028,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     [SPECIES_MEOWTH] =
     {
         .baseHP        = 40,
-        .baseAttack    = 45,
+        .baseAttack    = 65,
         .baseDefense   = 35,
         .baseSpeed     = 90,
-        .baseSpAttack  = 40,
+        .baseSpAttack  = 35,
         .baseSpDefense = 40,
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 255,
@@ -7098,17 +7098,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .eggMoveLearnset = sMeowthEggMoveLearnset,
         .formSpeciesIdTable = sMeowthFormSpeciesIdTable,
         .formChangeTable = sMeowthFormChangeTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_PERSIAN}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 23, SPECIES_PERSIAN}),
     },
 
     [SPECIES_PERSIAN] =
     {
         .baseHP        = 65,
-        .baseAttack    = 70,
-        .baseDefense   = 60,
+        .baseAttack    = 60,
+        .baseDefense   = 65,
         .baseSpeed     = 115,
         .baseSpAttack  = 65,
-        .baseSpDefense = 65,
+        .baseSpDefense = 95,
         .types = MON_TYPES(TYPE_NORMAL),
         .catchRate = 90,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 154 : 148,
@@ -7120,7 +7120,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
     #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_LIMBER, ABILITY_TECHNICIAN, ABILITY_UNNERVE },
+        .abilities = { ABILITY_FELINE_PROWESS, ABILITY_TECHNICIAN, ABILITY_UNNERVE },
     #else
         .abilities = { ABILITY_LIMBER, ABILITY_NONE, ABILITY_UNNERVE },
     #endif
@@ -7178,10 +7178,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     [SPECIES_MEOWTH_ALOLA] =
     {
         .baseHP        = 40,
-        .baseAttack    = 35,
+        .baseAttack    = 65,
         .baseDefense   = 35,
         .baseSpeed     = 90,
-        .baseSpAttack  = 50,
+        .baseSpAttack  = 40,
         .baseSpDefense = 40,
         .types = MON_TYPES(TYPE_DARK),
         .catchRate = 255,
@@ -7193,7 +7193,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_PICKUP, ABILITY_TECHNICIAN, ABILITY_RATTLED },
+        .abilities = { ABILITY_FELINE_PROWESS, ABILITY_TECHNICIAN, ABILITY_RATTLED },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Meowth"),
         .cryId = CRY_MEOWTH,
@@ -7247,10 +7247,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     {
         .baseHP        = 65,
         .baseAttack    = 60,
-        .baseDefense   = 60,
+        .baseDefense   = 65,
         .baseSpeed     = 115,
-        .baseSpAttack  = 75,
-        .baseSpDefense = 65,
+        .baseSpAttack  = 70,
+        .baseSpDefense = 95,
         .types = MON_TYPES(TYPE_DARK),
         .catchRate = 90,
         .expYield = 154,
@@ -7261,7 +7261,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_FUR_COAT, ABILITY_TECHNICIAN, ABILITY_RATTLED },
+        .abilities = { ABILITY_FELINE_PROWESS, ABILITY_TECHNICIAN, ABILITY_RATTLED },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Persian"),
         .cryId = CRY_PERSIAN,
@@ -13556,13 +13556,13 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 
     [SPECIES_MAROWAK] =
     {
-        .baseHP        = 60,
+        .baseHP        = 90,
         .baseAttack    = 80,
-        .baseDefense   = 110,
-        .baseSpeed     = 45,
+        .baseDefense   = 115,
+        .baseSpeed     = 85,
         .baseSpAttack  = 50,
         .baseSpDefense = P_UPDATED_STATS >= GEN_2 ? 80 : 50,
-        .types = MON_TYPES(TYPE_GROUND),
+        .types = MON_TYPES(TYPE_GROUND, TYPE_FIGHTING),
         .catchRate = 75,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 149 : 124,
         .evYield_Defense = 2,
@@ -14368,12 +14368,12 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 #if P_GALARIAN_FORMS
     [SPECIES_WEEZING_GALAR] =
     {
-        .baseHP        = 65,
-        .baseAttack    = 90,
+        .baseHP        = 85,
+        .baseAttack    = 70,
         .baseDefense   = 120,
         .baseSpeed     = 60,
-        .baseSpAttack  = 85,
-        .baseSpDefense = 70,
+        .baseSpAttack  = 100,
+        .baseSpDefense = 80,
         .types = MON_TYPES(TYPE_POISON, TYPE_FAIRY),
         .catchRate = 60,
         .expYield = 172,

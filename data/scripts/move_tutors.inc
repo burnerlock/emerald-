@@ -685,3 +685,4 @@ MoveTutor_Text_FireFang:
 
 MoveTutor_Text_ThunderFang:
 	.string "Thunder Fang$"
+	

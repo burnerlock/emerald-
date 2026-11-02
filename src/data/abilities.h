@@ -2462,4 +2462,11 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Kicking moves are special."),
         .aiRating = 8,
     },
+
+    [ABILITY_FELINE_PROWESS] =
+    {
+        .name = _("Feline Prowess"),
+        .description = COMPOUND_STRING("Doubles Sp.Atk."),
+        .aiRating = 8,
+    },
 };

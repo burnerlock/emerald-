@@ -52,7 +52,8 @@
     F(SKILL_SWAP) \
     F(SNATCH) \
     F(OVERHEAT) \
-    F(LOW_KICK) \
+    F(THIEF) \
+    F(U_TURN) \
 
 #define FOREACH_HM(F) \
     F(CUT) \

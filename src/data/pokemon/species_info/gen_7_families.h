@@ -4092,12 +4092,12 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
 
     [SPECIES_GOLISOPOD] =
     {
-        .baseHP        = 80,
+        .baseHP        = 90,
         .baseAttack    = 125,
         .baseDefense   = 135,
         .baseSpeed     = 65,
         .baseSpAttack  = 40,
-        .baseSpDefense = 95,
+        .baseSpDefense = 90,
         .types = MON_TYPES(TYPE_WATER, TYPE_BUG),
         .catchRate = 45,
         .expYield = 186,
@@ -7679,7 +7679,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .baseSpeed     = 133,
         .baseSpAttack  = 102,
         .baseSpDefense = 70,
-        .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FIGHTING),
+        .types = MON_TYPES(TYPE_ELECTRIC, TYPE_ICE),
         .catchRate = 3,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
         .evYield_Speed = 3,

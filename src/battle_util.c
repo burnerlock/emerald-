@@ -2477,6 +2477,10 @@ bool32 CanAbilityAbsorbMove(struct BattleContext *ctx)
         if (ctx->moveType == TYPE_FIRE)
             battleScript = AbsorbedByStatIncreaseAbility(ctx->battlerDef, ctx->abilityDef, STAT_DEF, 2);
         break;
+    case ABILITY_STEAM_ENGINE:
+        if (ctx->moveType == TYPE_FIRE || ctx->moveType == TYPE_WATER)
+            battleScript = AbsorbedByStatIncreaseAbility(ctx->battlerDef, ctx->abilityDef, STAT_SPEED, 1);
+        break;
     case ABILITY_THERMAL_EXCHANGE:
         if (ctx->moveType == TYPE_FIRE)
             battleScript = AbsorbedByStatIncreaseAbility(ctx->battlerDef, ctx->abilityDef, STAT_ATK, 1);
@@ -4271,18 +4275,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 gEffectBattler = gBattlerTarget;
                 // Will ability popup activate if there is only one target?
                 BattleScriptCall(BattleScript_CottonDownActivates);
-                effect++;
-            }
-            break;
-        case ABILITY_STEAM_ENGINE:
-            if (IsBattlerTurnDamaged(gBattlerTarget, EXCLUDING_SUBSTITUTES)
-             && IsBattlerAlive(battler)
-             && CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN, gLastUsedAbility)
-             && (moveType == TYPE_FIRE || moveType == TYPE_WATER))
-            {
-                gEffectBattler = gBattlerAbility = battler;
-                SET_STATCHANGER(STAT_SPEED, 6, FALSE);
-                BattleScriptCall(BattleScript_TargetAbilityStatRaiseRet);
                 effect++;
             }
             break;
@@ -6660,10 +6652,10 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx)
         break;
     case ABILITY_PROTOSYNTHESIS:
         if (IsBattleMoveSpecial(move))
-            modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
         if (IsBattleMovePhysical(move))
-            modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
     case ABILITY_FLARE_BOOST:
         if (gBattleMons[battlerAtk].status1 & STATUS1_BURN && IsBattleMoveSpecial(move))
@@ -6690,6 +6682,10 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx)
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
         break;
     case ABILITY_TAEKWONDO:
+        if (IsKickingMove(move))
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
+        break;
+    case ABILITY_MUAY_THAI:
         if (IsKickingMove(move))
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
         break;
@@ -7022,6 +7018,10 @@ static inline u32 CalcAttackStat(struct BattleContext *ctx)
     case ABILITY_HUGE_POWER:
     case ABILITY_PURE_POWER:
         if (IsBattleMovePhysical(move))
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
+        break;
+    case ABILITY_FELINE_PROWESS:
+        if (IsBattleMoveSpecial(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case ABILITY_CHLOROPLAST:

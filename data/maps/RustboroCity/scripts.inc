@@ -939,18 +939,24 @@ RustboroCity_EventScript_BrendanBrineyHint::
 RustboroCity_EventScript_BattleBrendanTreecko::
 	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	playfanfare MUS_OBTAIN_ITEM
+	giveitem ITEM_TM_DIG
 	goto RustboroCity_EventScript_BrendanBrineyHint
 	end
 
 RustboroCity_EventScript_BattleBrendanTorchic::
 	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	playfanfare MUS_OBTAIN_ITEM
+	giveitem ITEM_TM_DIG
 	goto RustboroCity_EventScript_BrendanBrineyHint
 	end
 
 RustboroCity_EventScript_BattleBrendanMudkip::
 	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	playfanfare MUS_OBTAIN_ITEM
+	giveitem ITEM_TM_DIG
 	goto RustboroCity_EventScript_BrendanBrineyHint
 	end
 

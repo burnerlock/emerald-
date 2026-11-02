@@ -6431,7 +6431,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "The type and effectiveness\n"
             "vary with the user."),
         #endif
-        .power = B_HIDDEN_POWER_DMG >= GEN_6 ? 70 : 1,
+        .power = B_HIDDEN_POWER_DMG >= GEN_6 ? 80 : 1,
         .effect = EFFECT_HIDDEN_POWER,
         .type = TYPE_NORMAL,
         .accuracy = 100,
@@ -7844,20 +7844,16 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Secret Power"),
         .description = COMPOUND_STRING(
-            "An attack with effects\n"
-            "that vary by location."),
-        .effect = EFFECT_HIT,
-        .power = 70,
+            "The type varies\n"
+            "with the user."),
+        .effect = EFFECT_HIDDEN_POWER,
+        .power = 80,
         .type = TYPE_NORMAL,
         .accuracy = 100,
-        .pp = 20,
+        .pp = 15,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
-        .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_SECRET_POWER,
-            .chance = 30,
-        }),
         .contestEffect = CONTEST_EFFECT_BETTER_WITH_GOOD_CONDITION,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
